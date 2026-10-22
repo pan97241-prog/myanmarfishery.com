@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Myanmar Open – Antigravity Golf Championship</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="logo">Myanmar Open 🏌️‍♂️</div>
+    <ul>
+      <li><a href="#simulator">Simulator</a></li>
+      <li><a href="#gravity">Gravity Matrix</a></li>
+      <li><a href="#leaderboard">Leaderboard</a></li>
+      <li><a href="#venues">Venues</a></li>
+      <li><a href="#vip" id="vipBtn">VIP Tickets</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="hero">
+    <div class="content">
+      <h1>Myanmar Open – Antigravity Golf Championship</h1>
+      <p>Experience the tournament across Earth, Mars, Moon and Zero‑G.</p>
+      <button id="muteBtn">🔊 Mute</button>
+    </div>
+  </section>
+
+  <!-- 2D Trajectory Simulator -->
+  <section id="simulator">
+    <h2>2D Trajectory Simulator</h2>
+    <div class="controls">
+      <label>
+        Power (%):
+        <input type="range" id="power" min="10" max="100" value="50" />
+      </label>
+      <label>
+        Launch Angle (°):
+        <input type="range" id="angle" min="5" max="80" value="45" />
+      </label>
+      <label>
+        Yaw (°):
+        <input type="range" id="yaw" min="-45" max="45" value="0" />
+      </label>
+      <label>
+        Gravity Zone:
+        <select id="gravitySelect">
+          <option value="EARTH">Earth</option>
+          <option value="MARS">Mars</option>
+          <option value="MOON">Moon</option>
+          <option value="ZERO_G">Zero‑G</option>
+        </select>
+      </label>
+      <button id="launchBtn">Launch</button>
+    </div>
+    <canvas id="trajectoryCanvas" width="800" height="400"></canvas>
+  </section>
+
+  <!-- Gravity Comparison Matrix -->
+  <section id="gravity">
+    <h2>Gravity Comparison Matrix</h2>
+    <div class="grid">
+      <div class="card glass" style="border-top: 4px solid var(--cosmic-emerald);">
+        <h3>Earth</h3>
+        <p>g = 9.81 m/s²</p>
+      </div>
+      <div class="card glass" style="border-top: 4px solid var(--cosmic-magenta);">
+        <h3>Mars</h3>
+        <p>g = 3.71 m/s²</p>
+      </div>
+      <div class="card glass" style="border-top: 4px solid var(--cosmic-cyan);">
+        <h3>Moon</h3>
+        <p>g = 1.62 m/s²</p>
+      </div>
+      <div class="card glass" style="border-top: 4px solid var(--cosmic-gold);">
+        <h3>Zero‑G</h3>
+        <p>g = 0.15 m/s²</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leaderboard -->
+  <section id="leaderboard">
+    <h2>Historical Champions & Leaderboard</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Champion</th>
+          <th>Country</th>
+          <th>Score</th>
+          <th>Venue</th>
+        </tr>
+      </thead>
+      <tbody id="championsBody">
+        <!-- Filled by script.js -->
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Venue Showcase -->
+  <section id="venues">
+    <h2>Venue Showcase</h2>
+    <div class="grid">
+      <div class="venue-card glass">
+        <img src="https://images.unsplash.com/photo-1589519160732-57fc498494f8?auto=format&fit=crop&w=800&q=80" alt="Pun Hlaing Golf Club" />
+        <div class="info">
+          <h3>Pun Hlaing Golf Club</h3>
+          <p>18 Holes • Par 72 • 7,012 Yards</p>
+        </div>
+      </div>
+      <div class="venue-card glass">
+        <img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=800&q=80" alt="Royal Mingalardon Golf Club" />
+        <div class="info">
+          <h3>Royal Mingalardon Golf Club</h3>
+          <p>18 Holes • Par 72 • 7,200 Yards</p>
+        </div>
+      </div>
+      <div class="venue-card glass">
+        <img src="https://images.unsplash.com/photo-1522030299830-16b8d3d049fe?auto=format&fit=crop&w=800&q=80" alt="Lunar Orbital Base" />
+        <div class="info">
+          <h3>Lunar Orbital Base</h3>
+          <p>Zero‑drag lunar flight paths</p>
+        </div>
+      </div>
+      <div class="venue-card glass">
+        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" alt="Zero‑G Station" />
+        <div class="info">
+          <h3>Zero‑G Station</h3>
+          <p>Orbital links floating above Earth</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIP Ticket Modal -->
+  <div id="vipModal">
+    <div class="modal-content glass">
+      <span class="close" id="closeVip">&times;</span>
+      <h2>VIP Ticket Booking</h2>
+      <p>Select your tier and see the total price.</p>
+      <label>
+        Tier:
+        <select id="vipTier">
+          <option value="courtside" data-price="250">Courtside – $250</option>
+          <option value="orbital" data-price="500">Orbital Lounge – $500</option>
+          <option value="zerog" data-price="800">Zero‑G Suite – $800</option>
+        </select>
+      </label>
+      <p>Total: $<span id="vipTotal">250</span></p>
+      <button id="confirmVip">Confirm Booking</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2026 Myanmar Open Cosmic Tour Development
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
